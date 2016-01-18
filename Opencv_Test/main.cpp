@@ -314,6 +314,14 @@ int main() {
     cout << " i: " << i << endl;
     cout << " j: " << j << endl;
  
+    Vec3b rgb=img0.at<Vec3b>(i,j);
+    int B=rgb.val[0];
+    int G=rgb.val[1];
+    int R=rgb.val[2];
+    
+    cout << " R: " << R << endl;
+    cout << " G: " << G << endl;
+    cout << " B: " << B << endl;
     
     Mat RGB=img0(Rect(i,j,1,1));
     cvtColor(img0, HSV,CV_BGR2HSV);
