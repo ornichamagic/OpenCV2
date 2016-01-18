@@ -241,7 +241,7 @@ using namespace std;
 int main() {
     
     // read in the apple (change path to the file)
-    Mat img0 = imread("/Users/Ornicha/Desktop/OpenCV/image/pill.jpg", 1);
+    Mat img0 = imread("/Users/Ornicha/Desktop/OpenCV/image/yellow.jpg", 1);
     
     Mat img1;
     cvtColor(img0, img1, CV_RGB2GRAY);
@@ -348,72 +348,73 @@ int main() {
     {
         cout << " Color: Orange" << endl;
     }
-    else if (H >= 13 && H < 20)
+    else if (H >= 13 && H <= 20)
     {
         cout << " Color: Orange-Brown" << endl;
     }
-    else if (H >= 21 && H < 25)
+    else if (H >= 21 && H <= 25)
     {
         cout << " Color: Orange-Yellow" << endl;
     }
-    else if (H >= 26 && H < 30)
+    else if (H >= 26 && H <= 30)
     {
         cout << " Color: Yellow" << endl;
     }
-    else if (H >= 31 && H < 40)
+    else if (H >= 31 && H <= 40)
     {
         cout << " Color: Yellow-Green" << endl;
     }
-    else if (H >= 41 && H < 70)
+    else if (H >= 41 && H <= 70)
     {
         cout << " Color: Green" << endl;
     }
-    else if (H >= 71 && H < 85)
+    else if (H >= 71 && H <= 85)
     {
         cout << " Color: Green-Cyan" << endl;
     }
-    else if (H >= 86 && H < 100)
+    else if (H >= 86 && H <= 100)
     {
         cout << " Color: Cyan" << endl;
     }
-    else if (H >= 101 && H < 110)
+    else if (H >= 101 && H <= 110)
     {
         cout << " Color: Cyan-Blue" << endl;
     }
-    else if (H >= 111 && H < 130)
+    else if (H >= 111 && H <= 130)
     {
         cout << " Color: Blue" << endl;
     }
-    else if (H >= 131 && H < 140)
+    else if (H >= 131 && H <= 140)
     {
         cout << " Color: Violet" << endl;
     }
-    else if (H >= 141 && H < 160)
+    else if (H >= 141 && H <= 160)
     {
         cout << " Color: Magenta" << endl;
     }
-    else if (H >= 161 && H < 167)
+    else if (H >= 161 && H <= 167)
     {
         cout << " Color: Magenta-Pink" << endl;
     }
-    else if (H >= 168 && H < 175)
+    else if (H >= 168 && H <= 175)
     {
         cout << " Color: Pink" << endl;
     }
-    else if (H >= 176 && H < 177)
+    else if (H >= 176 && H <= 177)
     {
         cout << " Color: Pink-Red" << endl;
     }
-    else if (H >= 176 && H < 177)
+    else if (H >= 176 && H <= 177)
     {
         cout << " Color: Pink-Red" << endl;
     }
-    else if (H >= 178 && H < 180)
+    else if (H >= 178 && H <= 180)
     {
         cout << " Color: Red" << endl;
     }
     sprintf(name,"H=%d",H);
-    putText(img0,".", Point(i,j) , FONT_HERSHEY_SIMPLEX, .7, Scalar(0,255,0), 2,8,false );
+    putText(img0,".", Point(i,j) , FONT_HERSHEY_SIMPLEX, .7, Scalar(255,0,0), 2,8,false );
+     putText(HSV,".", Point(i,j) , FONT_HERSHEY_SIMPLEX, .7, Scalar(255,0,0), 2,8,false );
 //
 //                
 //            }//
@@ -425,7 +426,7 @@ int main() {
     imshow("mask", mask);
     imshow("canny", img1);
     imshow("cropped", crop);
-     //imshow("HSV", HSV);
+     imshow("HSV", HSV);
     
 
     
