@@ -241,7 +241,7 @@ using namespace std;
 int main() {
     
     // read in the apple (change path to the file)
-    Mat img0 = imread("/Users/Ornicha/Desktop/OpenCV/image/yellow.jpg", 1);
+    Mat img0 = imread("/Users/MagicMagic/Desktop/OpenCV/image/yellow.jpg", 1);
     
     Mat img1;
     cvtColor(img0, img1, CV_RGB2GRAY);
@@ -253,9 +253,9 @@ int main() {
     vector< vector<Point> > contours;
     findContours(img1, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
     
-    cout << " Area: " << contours.size() << endl;
-
-    cout << " Area: " << contourArea(contours[0]) << endl;
+//    cout << " Area: " << contours.size() << endl;
+//
+//    cout << " Area: " << contourArea(contours[0]) << endl;
     //cout << " Area: " << contourArea(contours[1]) << endl;
     
     // you could also reuse img1 here
