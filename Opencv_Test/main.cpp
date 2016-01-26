@@ -22,7 +22,7 @@
 //    
 //    
 //    cv::Mat image,dst;
-//    image = cv::imread("/Users/Ornicha/Desktop/test/Opencv-Test/Opencv-Test/fruits.jpg", CV_LOAD_IMAGE_COLOR);   // Read the file
+//    image = imread("/Users/MagicMagic/Desktop/OpenCV/image/Pill02_1001.JPG", 1);   // Read the file
 //    
 //    if(! image.data )                              // Check for invalid input
 //    {
@@ -42,8 +42,8 @@
 //    cv::waitKey(0);                                          // Wait for a keystroke in the window
 //    return 0;
 //}
-
-
+//
+//
 //---------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------
 //
@@ -59,7 +59,7 @@
 //int main( )
 //{
 //    Mat image,dst;
-//    image = imread("/Users/Ornicha/Desktop/image/pill2.jpg", 1);
+//    image = imread("/Users/MagicMagic/Desktop/OpenCV/image/Pill02_1001.JPG", 1);
 //    namedWindow( "Display window", CV_WINDOW_AUTOSIZE );
 //    imshow( "Display window", image );
 //    
@@ -241,7 +241,10 @@ using namespace std;
 int main() {
     
     // read in the apple (change path to the file)
-    Mat img0 = imread("/Users/MagicMagic/Desktop/OpenCV/image/yellow.jpg", 1);
+    Mat img0 = imread("/Users/MagicMagic/Desktop/OpenCV/image/Pill02_1001.JPG", 1);
+    
+    resize(img0, img0, cv::Size(400,400));
+
     
     Mat img1;
     cvtColor(img0, img1, CV_RGB2GRAY);
@@ -271,13 +274,18 @@ int main() {
      found. Here's some commented out code how to do that:
      */
     
-    //    vector<double> areas(contours.size());
-    //    for(int i = 0; i < contours.size(); i++)
-    //        areas[i] = contourArea(Mat(contours[i]));
-    //    double max;
-    //    Point maxPosition;
-    //    minMaxLoc(Mat(areas),0,&max,0,&maxPosition);
-    //    drawContours(mask, contours, maxPosition.y, Scalar(1), CV_FILLED);
+        vector<double> areas(contours.size());
+        for(int i = 0; i < contours.size(); i++)
+            areas[i] = contourArea(Mat(contours[i]));
+        double max;
+        Point maxPosition;
+        minMaxLoc(Mat(areas),0,&max,0,&maxPosition);
+        drawContours(mask, contours, maxPosition.y, Scalar(1), CV_FILLED);
+    
+   cout << " Area: " << contours.size() << endl;
+    //
+    //
+   cout << " Area: " << contourArea(contours[0]) << endl;
     
     // let's create a new image now
     Mat crop(img0.rows, img0.cols, CV_8UC3);
@@ -427,6 +435,18 @@ int main() {
 //                
 //            }//
 //        }
+    
+    Mat drawing = Mat::zeros( img0.size(), CV_8UC3 );
+    RNG rng(12345);
+    
+    for( int i = 0; i< contours.size(); i++ )
+    {
+        Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
+        drawContours( drawing, contours, i, color, 2, 8, CV_RETR_EXTERNAL, 0, Point() );
+    }
+    
+    imshow( "Result window", drawing );
+
     
     
     // show the images
